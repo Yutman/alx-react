@@ -1,6 +1,5 @@
 // Import jQuery and load dash
 import $ from "jquery";
-import _ from "lodash";
 
 // Create and append the elements
 $(document).ready(function () {
@@ -24,6 +23,9 @@ $(document).ready(function () {
   const paragraph3 = $("<p>Copyright - Holberton School</p>");
   $("body").append(paragraph3);
 });
+
+import $ from "jquery";
+import _ from "lodash";
 
 // Initialize a click counter
 let clickCount = 0;
