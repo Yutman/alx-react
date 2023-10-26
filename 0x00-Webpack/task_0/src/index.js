@@ -8,6 +8,7 @@ function addParagraphs() {
   const paragraph1 = $("<p>Holberton Dashboard</p>");
   body.append(paragraph1);
 
+
   // Create and append the second paragraph
   const paragraph2 = $("<p>Dashboard data for the students</p>");
   body.append(paragraph2);
