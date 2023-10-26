@@ -1,7 +1,6 @@
 // Import jQuery
 import $ from "jquery";
 
-// Function to add paragraphs to the page body
 function addParagraphs() {
   const body = $("body");
 
