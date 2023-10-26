@@ -1,26 +1,27 @@
 const path = require("path");
 
 module.exports = {
-  mode: "production",
   entry: "./js/dashboard_main.js",
   output: {
-    filename: "bundle.js",
     path: path.resolve(__dirname, "public"),
+    filename: "bundle.js",
   },
+  mode: "production",
   module: {
     rules: [
       {
-        test: /\.css/, // Match CSS files
-        use: ["style-loader", "css-loader"], // Use style-loader and css-loader
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)/, // Match common image file extensions
+        test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
+          "file-loader",
           {
-            loader: "url-loader",
+            loader: "image-webpack-loader",
             options: {
-              limit: 8192, // Images smaller than 8kb will be inlined as base64 data URLs
-              name: "images/[name].[ext]", // Output images to the 'images' directory
+              bypassOnDebug: true,
+              disable: true,
             },
           },
         ],
