@@ -5,10 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production"
-  },
-  "keywords": [],
-  "author": "",
+     "dev": "webpack --mode development",
+    "build": "webpack"
+},
+  "keywords": [
+     "asset",
+    "compilation",
+    "entry",
+    "points",
+    "javascript",
+    "loaders",
+    "output",
+    "webpack",
+    "plugins"
+  ],
+  "author": "Peter Kuria",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^5.89.0",
