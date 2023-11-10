@@ -34,4 +34,4 @@ const CourseList = () => {
   );
 };
 
-export default CourseL;
+export default CourseList;
