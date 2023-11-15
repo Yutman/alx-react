@@ -1,23 +1,34 @@
 import React from "react";
 import { shallow } from "enzyme";
-import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
+import BodySection from "./BodySection";
 import { StyleSheetTestUtils } from "aphrodite";
 
-describe("<BodySectionWithMarginBottom />", () => {
-  it("component and props", () => {
+describe("<BodySection />", () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  });
+
+  it("render without crashing", () => {
+    const wrapper = shallow(<BodySection />);
+    expect(wrapper.exists());
+  });
+
+  it("with children and heading", () => {
     const wrapper = shallow(
-      <BodySectionWithMarginBottom title="test title">
+      <BodySection title="test title">
         <p>test children node</p>
-      </BodySectionWithMarginBottom>
+      </BodySection>
     );
-    const div = wrapper.find(".bodySectionWithMargin").first();
-    const BodySection = wrapper.find("BodySection");
-    const internalBody = BodySection.dive();
-    const h2 = internalBody.find("h2");
-    const p = internalBody.find("p");
-    expect(div.exists()).toEqual(true);
-    expect(BodySection).toHaveLength(1);
-    expect(BodySection.props().title).toEqual("test title");
+    expect(wrapper.exists());
+    const div = wrapper.find(".bodySection").first();
+    const h2 = wrapper.find("h2");
+    const p = wrapper.find("p");
+    expect(div.exists());
+    expect(h2.exists());
+    expect(p.exists());
     expect(h2).toHaveLength(1);
     expect(h2.text()).toEqual("test title");
     expect(p).toHaveLength(1);
