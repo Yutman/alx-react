@@ -33,5 +33,14 @@
   },
   "dependencies": {
     "prop-types": "^15.8.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/config/setupTests.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(jpg|png)$": "<rootDir>/__mocks__/fileMock.js"
+    }
   }
 }
