@@ -1,27 +1,48 @@
-import React from 'react';
-import { StyleSheetTestUtils } from 'aphrodite';
-import Login from './Login';
-import { shallow } from 'enzyme';
+import React from "react";
+import { shallow } from "enzyme";
+import Login from "./Login";
+import { StyleSheetTestUtils } from "aphrodite";
 
-beforeEach(() => {
-  StyleSheetTestUtils.suppressStyleInjection();
-});
-
-afterEach(() => {
-  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
-});
-
-describe('rendering components', () => {
-  it('renders Login component without crashing', () => {
-    const wrapper = shallow(<Login />);
-
-    expect(wrapper.exists()).toBe(true);
+describe("<Login />", () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
   });
 
-  it('Login component renders 2 <input> and 2 <label> tags', () => {
-    const wrapper = shallow(<Login />);
+  const wrapper = shallow(<Login />);
 
-    expect(wrapper.find('label')).toHaveLength(2);
-    expect(wrapper.find('input')).toHaveLength(2);
+  it("render without crashing", () => {
+    expect(wrapper.exists());
+  });
+
+  it("labels", () => {
+    expect(wrapper.find("form label")).toHaveLength(2);
+  });
+
+  it("inputs", () => {
+    expect(wrapper.find("form input")).toHaveLength(2);
+  });
+
+  it("button", () => {
+    const button = wrapper.find("form button[type='submit']");
+    expect(button).toHaveLength(1);
+    expect(button.prop("disabled")).toEqual(true);
+  });
+
+  it("form working", () => {
+    const email = wrapper.find("#email");
+    const password = wrapper.find("#password");
+    email.simulate("change", {
+      target: { name: "email", value: "account@domain.ext" },
+    });
+    let submit = wrapper.find("form button[type='submit']");
+    expect(submit.prop("disabled")).toEqual(true);
+    password.simulate("change", {
+      target: { name: "password", value: "qwerty" },
+    });
+    submit = wrapper.find("form button[type='submit']");
+    expect(submit.prop("disabled")).toEqual(false);
   });
 });
