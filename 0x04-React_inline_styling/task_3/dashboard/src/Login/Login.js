@@ -1,63 +1,55 @@
-import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import React from "react";
+import { StyleSheet, css } from "aphrodite";
+
+function Login() {
+  return (
+    <main role="main" className={css(styles.login)}>
+      <p>Login to access the full dashboard</p>
+      <label htmlFor="email">Email:</label>
+      <input className={css(styles.inp)} type="email" name="email" id="email" />
+      <label htmlFor="password">Password:</label>
+      <input
+        className={css(styles.inp)}
+        type="password"
+        name="password"
+        id="password"
+      />
+      <button className={css(styles.btn)} type="button">
+        OK
+      </button>
+    </main>
+  );
+}
+
+const screenSize = {
+  small: "@media screen and (max-width: 900px)",
+};
 
 const styles = StyleSheet.create({
-	'App-body': {
-		fontSize: '1.4rem',
-		padding: '1.2em',
-		height: '45%',
-	},
-
-	'form-inputs': {
-		display: 'flex',
-		gap: '2em',
-		alignItems: 'center',
-	},
-
-	mobile: {
-		'@media (max-width: 375px)': {
-			display: 'flex',
-			flexDirection: 'column',
-			alignItems: 'flex-start',
-			gap: '0.5em',
-		},
-	},
-
-	input: {
-		height: '1.4rem',
-		marginLeft: '10px',
-	},
+  login: {
+    padding: "16px 24px",
+    [screenSize.small]: {
+      width: "90%",
+      padding: 0,
+    },
+  },
+  inp: {
+    margin: "4px",
+    [screenSize.small]: {
+      display: "block",
+      border: "none",
+      margin: 0,
+    },
+  },
+  btn: {
+    margin: "4px",
+    cursor: "pointer",
+    [screenSize.small]: {
+      width: "32px",
+      display: "block",
+      margin: 0,
+    },
+  },
 });
-
-const Login = () => {
-	return (
-		<>
-			<div className={css(styles['App-body'])}>
-				<p>Login to access the full dashboard</p>
-				<section className={css(styles['form-inputs'], styles.mobile)}>
-					<section className='input'>
-						<label htmlFor='email'>Email:</label>
-						<input
-							type='email'
-							name='email'
-							id='email'
-							className={css(styles.input)}
-						/>
-					</section>
-					<section className='input'>
-						<label htmlFor='password'>Password: </label>
-						<input
-							type='password'
-							name='password'
-							id='password'
-							className={css(styles.input)}
-						/>
-					</section>
-					<button>OK</button>
-				</section>
-			</div>
-		</>
-	);
-};
 
 export default Login;
